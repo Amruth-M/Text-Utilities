@@ -3,12 +3,14 @@ import Alert from './components/Alert';
 import About from './components/About';
 import Navbar from './components/Navbar';
 import Texter from './components/Texter';
+
 import React, {useState} from 'react'
 
 import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Navigate
   // Link
 } from "react-router-dom";
 
@@ -53,9 +55,15 @@ const toggleMode=()=>{
     <Navbar title="sharkBite" about="About" mode={mode} toggleMode={toggleMode}/>
     </div>
     <Alert alert={alert}/>
+    <div>
+
+    </div>
     <Routes>
-          <Route exact path="/" element={<Texter head="Amruth's work space" mode={mode}/>}/>    
-          <Route exact path="/about" element={<About mode={mode}/>}/>       
+          {/* <Route index element={<Texter head="Amruth's Work Space" mode={mode} />} /> */}
+          <Route exact path="/" element={<Texter head=" Work space - text anything you like" mode={mode}/>}/> 
+
+          <Route exact path="/about" element={<About mode={mode}/>}/>  
+          <Route path="*" element={<Navigate to="/" />} />     
     </Routes>
     </Router>
 
